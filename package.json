@@ -1,0 +1,27 @@
+{
+  "name": "webryx-sites",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webryx Sites - premium agency landing page + lead generation system.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "next": "^16.2.7",
+    "nodemailer": "^8.0.10",
+    "react": "^19.0.0",
+    "react-colorful": "^5.6.1",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.53.0",
+    "resend": "^4.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  }
+}

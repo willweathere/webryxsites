@@ -1,0 +1,286 @@
+// Rich content for the tier detail pages, capability pages and the hero showcase.
+// Kept separate from constants.js (form options) to stay tidy.
+
+// ---- Website preview mockups (rendered in code by WebsiteMockup.jsx) ----
+// Each variant drives a stylised browser-frame "screenshot".
+export const MOCKUPS = {
+  restaurant: { label: "Bella Cucina", kind: "hero", accent: "#FF6B8B", tag: "Restaurant" },
+  gym: { label: "IronWorks Gym", kind: "booking", accent: "#34D399", tag: "Gym" },
+  retail: { label: "Nord Store", kind: "shop", accent: "#8B93FF", tag: "Retail" },
+  ecommerce: { label: "Luxe Goods", kind: "shop", accent: "#A06AFF", tag: "E-commerce" },
+  trades: { label: "Apex Builders", kind: "hero", accent: "#F8B84E", tag: "Tradesman" },
+  portfolio: { label: "Studio Mono", kind: "grid", accent: "#38BDF8", tag: "Portfolio" },
+  landing: { label: "LaunchKit", kind: "hero", accent: "#FF6B8B", tag: "Landing" },
+  booking: { label: "Glow Salon", kind: "booking", accent: "#A06AFF", tag: "Booking" },
+};
+
+export const WHEEL_VARIANTS = [
+  "restaurant", "gym", "retail", "ecommerce",
+  "trades", "portfolio", "landing", "booking",
+];
+
+// ---- Capabilities / services (each gets a detail page at /services/[slug]) ----
+export const CAPABILITIES = [
+  {
+    slug: "social-media",
+    icon: "link",
+    title: "Social media integration",
+    blurb: "Connect Instagram, Facebook, TikTok & more so your feed and follower count live right on your site.",
+    mockup: "retail",
+    details: [
+      "Live Instagram & TikTok feeds embedded on your pages",
+      "One-tap follow and share buttons",
+      "Auto-pull your latest posts — no manual updates",
+      "Click-to-DM and WhatsApp chat buttons",
+    ],
+  },
+  {
+    slug: "video-motion",
+    icon: "play",
+    title: "Video & motion",
+    blurb: "Background hero videos, reels and subtle animations that make your brand feel alive and premium.",
+    mockup: "landing",
+    details: [
+      "Auto-playing background hero videos",
+      "Embedded YouTube / Vimeo galleries",
+      "Smooth scroll and reveal animations",
+      "Optimised so video never slows the page down",
+    ],
+  },
+  {
+    slug: "online-store",
+    icon: "card",
+    title: "Online store & payments",
+    blurb: "Sell products or services and take secure card payments, Apple Pay and Google Pay online.",
+    mockup: "ecommerce",
+    details: [
+      "Product catalogue with photos and variants",
+      "Secure checkout (Stripe) — cards, Apple & Google Pay",
+      "Discount codes and stock tracking",
+      "Order confirmation emails out of the box",
+    ],
+  },
+  {
+    slug: "booking",
+    icon: "calendar",
+    title: "Booking & enquiries",
+    blurb: "Let customers book appointments or send enquiries 24/7 without a single phone call.",
+    mockup: "booking",
+    details: [
+      "Calendar booking with time slots",
+      "Automatic confirmation & reminder emails",
+      "Lead forms that land straight in your inbox",
+      "Sync with Google Calendar",
+    ],
+  },
+  {
+    slug: "seo-google",
+    icon: "search",
+    title: "SEO & Google",
+    blurb: "Get found on Google, show up on Maps, and turn local searches into paying customers.",
+    mockup: "trades",
+    details: [
+      "On-page SEO so Google understands your site",
+      "Google Business Profile & Maps setup",
+      "Fast loading — a key Google ranking factor",
+      "Local keyword targeting for your area",
+    ],
+  },
+  {
+    slug: "analytics",
+    icon: "chart",
+    title: "Analytics & tracking",
+    blurb: "See exactly how many visitors you get, where they come from, and what they click.",
+    mockup: "portfolio",
+    details: [
+      "Visitor and traffic dashboards",
+      "See which pages and buttons get clicked",
+      "Track form submissions and sales",
+      "Monthly plain-English performance summary",
+    ],
+  },
+];
+
+export const capabilityFor = (slug) =>
+  CAPABILITIES.find((c) => c.slug === slug) ?? null;
+
+// ---- Extra detail layered onto each pricing tier on its own page ----
+export const TIER_DETAILS = {
+  starter: {
+    summary:
+      "A clean, fast 1–3 page website that gets your business online and taking enquiries — perfect for getting started.",
+    idealFor: "New businesses, tradesmen and anyone who needs a sharp online presence fast.",
+    mockups: ["trades", "landing"],
+    includes: [
+      "1–3 professionally designed pages",
+      "Mobile-first responsive layout",
+      "Contact form straight to your inbox",
+      "Basic SEO so Google can find you",
+      "Hosting, SSL and updates included",
+    ],
+    addOns: ["social-media", "seo-google"],
+  },
+  business: {
+    summary:
+      "A bigger, fully custom site with the features growing businesses need — built to bring in real enquiries and bookings.",
+    idealFor: "Established local businesses ready to look the part and convert visitors.",
+    mockups: ["restaurant", "gym", "retail"],
+    includes: [
+      "Up to 6 custom-designed pages",
+      "Google Maps & reviews integration",
+      "Improved SEO and faster performance",
+      "Booking or enquiry system",
+      "Priority support",
+    ],
+    addOns: ["booking", "social-media", "analytics"],
+  },
+  premium: {
+    summary:
+      "The complete package — a fully bespoke website with store, bookings, advanced SEO and everything running like clockwork.",
+    idealFor: "Businesses that want the full toolkit and a site that does the selling for them.",
+    mockups: ["ecommerce", "booking", "portfolio"],
+    includes: [
+      "Up to 10 fully bespoke pages",
+      "Online store & secure payments",
+      "Booking system with reminders",
+      "Advanced SEO setup",
+      "Logo, branding and priority support",
+    ],
+    addOns: ["online-store", "video-motion", "analytics", "social-media"],
+  },
+};
+
+export const tierDetailFor = (slug) => TIER_DETAILS[slug] ?? null;
+
+// ---- Social media management plans (monthly) — shown on /social-media ----
+export const SOCIAL_PLANS = [
+  {
+    value: "social-starter",
+    name: "Starter",
+    medal: "Bronze",
+    monthly: 50,
+    tagline: "Stay active",
+    summary: "Keep your business ticking over with regular, on-brand posts.",
+    perks: [
+      "8 posts per month",
+      "1 platform of your choice",
+      "On-brand captions written for you",
+      "Hashtag research included",
+      "Scheduled at the best times",
+      "Simple monthly content plan",
+    ],
+  },
+  {
+    value: "social-growth",
+    name: "Growth",
+    medal: "Silver",
+    monthly: 100,
+    popular: true,
+    tagline: "Most popular",
+    summary: "Build a real following with more posts across more platforms.",
+    perks: [
+      "16 posts per month",
+      "Up to 3 platforms",
+      "Captions, hashtags & emojis",
+      "Stories & post graphics designed",
+      "We reply to comments & DMs",
+      "Monthly performance report",
+    ],
+  },
+  {
+    value: "social-pro",
+    name: "Pro",
+    medal: "Gold",
+    monthly: 150,
+    tagline: "Maximum reach",
+    summary: "Full hands-off social media — daily content and short-form video.",
+    perks: [
+      "Daily posts (30 per month)",
+      "All major platforms",
+      "Short-form video & reels",
+      "Full community management",
+      "Trend & competitor tracking",
+      "Priority support + monthly strategy call",
+    ],
+  },
+];
+
+export const socialPlanFor = (value) =>
+  SOCIAL_PLANS.find((p) => p.value === value) ?? null;
+
+// ---- Homepage "How it works" process steps ----
+export const PROCESS_STEPS = [
+  {
+    n: "01",
+    title: "Tell us about your business",
+    text: "Fill in the 3-minute builder or send a quick enquiry — no calls, no jargon, no obligation.",
+  },
+  {
+    n: "02",
+    title: "We design & build",
+    text: "Your site is designed around your brand and built to convert — most go live in days, not months.",
+  },
+  {
+    n: "03",
+    title: "You review & refine",
+    text: "We walk you through the site and polish every detail until you're completely happy.",
+  },
+  {
+    n: "04",
+    title: "Launch & grow",
+    text: "We host, secure and maintain everything — you focus on the new enquiries coming in.",
+  },
+];
+
+// ---- Homepage FAQs ----
+export const FAQS = [
+  {
+    q: "How long does it take to build my website?",
+    a: "Most Starter and Business sites go live within days of receiving your content. Bigger Premium builds with stores or booking systems typically take 1–2 weeks. We'll give you a clear timeline up front.",
+  },
+  {
+    q: "What does the monthly fee cover?",
+    a: "Hosting, SSL security, software updates, backups and ongoing support. Your site stays fast, secure and online — you never have to think about the technical side.",
+  },
+  {
+    q: "Can I cancel the monthly plan?",
+    a: "Yes — all plans are rolling monthly with no long contracts. Cancel anytime and we'll help you wind things down properly.",
+  },
+  {
+    q: "Do I own my website?",
+    a: "Yes. The design and content are yours. If you ever move on, we'll hand everything over cleanly — no lock-in, no hostage-taking.",
+  },
+  {
+    q: "Can you write the words and find images?",
+    a: "Absolutely. Tell us about your business and we'll draft professional copy and source imagery — you just review and approve.",
+  },
+  {
+    q: "Can you run my social media too?",
+    a: "Yes — we offer done-for-you social media plans from £50/month. We plan, create and schedule posts so your channels stay active while you run your business.",
+  },
+];
+
+// ---- Testimonials (placeholders — swap in real client quotes as they come in) ----
+export const TESTIMONIALS = [
+  {
+    quote:
+      "The new site looks incredible and we started getting enquiries in the first week. The whole process was completely painless.",
+    name: "Sarah M.",
+    role: "Salon owner",
+    accent: "#A06AFF",
+  },
+  {
+    quote:
+      "Fast, professional and they actually listened. Our old site embarrassed us — this one wins us work.",
+    name: "James T.",
+    role: "Building contractor",
+    accent: "#F8B84E",
+  },
+  {
+    quote:
+      "They handle the website and our socials. Everything just works, and bookings are up month on month.",
+    name: "Priya K.",
+    role: "Gym owner",
+    accent: "#34D399",
+  },
+];

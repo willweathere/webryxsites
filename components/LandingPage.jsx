@@ -1,0 +1,173 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import { STORAGE_KEY, DEFAULTS } from "./formState";
+import { packageFor } from "./constants";
+import Nav from "./site/Nav";
+import Hero from "./site/Hero";
+import Link from "next/link";
+import SocialMedia from "./site/SocialMedia";
+import Reveal from "./Reveal";
+import Pricing from "./site/Pricing";
+import Capabilities from "./site/Capabilities";
+import Features from "./site/Features";
+import Growth from "./site/Growth";
+import Process from "./site/Process";
+import Testimonials from "./site/Testimonials";
+import FAQ from "./site/FAQ";
+import CustomRequest from "./site/CustomRequest";
+import SiteFooter from "./site/SiteFooter";
+import LeadForm from "./LeadForm";
+
+export default function LandingPage() {
+  const [step, setStep] = useState(1);
+  const hydrated = useRef(false);
+
+  const methods = useForm({ defaultValues: DEFAULTS, mode: "onTouched" });
+  const { watch, reset, getValues, setValue } = methods;
+
+  // Restore saved progress once on mount, then apply any ?plan= from a tier page.
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        reset({ ...DEFAULTS, ...parsed.values });
+        if (parsed.step) setStep(parsed.step);
+      }
+    } catch {
+      /* ignore corrupt storage */
+    }
+
+    // Preselect a package if the user arrived from a tier page (/?plan=business).
+    try {
+      const plan = new URLSearchParams(window.location.search).get("plan");
+      if (plan && packageFor(plan)) {
+        setValue("selectedPackage", plan, { shouldDirty: true });
+        setStep(5);
+      }
+    } catch {
+      /* ignore */
+    }
+
+    hydrated.current = true;
+    // Mount-only: reset/setValue are stable RHF methods.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Persist on every change.
+  useEffect(() => {
+    const sub = watch((values) => {
+      if (!hydrated.current) return;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ values, step }));
+      } catch {
+        /* storage unavailable */
+      }
+    });
+    return () => sub.unsubscribe();
+  }, [watch, step]);
+
+  // Keep persisted step in sync.
+  useEffect(() => {
+    if (!hydrated.current) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ values: getValues(), step }));
+    } catch {
+      /* ignore */
+    }
+  }, [step, getValues]);
+
+  const scrollToId = (id) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // Edit links from the review screen: numbers jump form steps, strings scroll to a section.
+  const goToStep = (target) => {
+    if (typeof target === "number") setStep(target);
+    else scrollToId(target);
+  };
+
+  return (
+    <FormProvider {...methods}>
+      <Nav />
+      <main>
+        <Hero />
+        <Reveal><Pricing /></Reveal>
+        <Reveal><Process /></Reveal>
+        <Reveal><SocialMedia /></Reveal>
+
+        {/* Teaser → full before/after page */}
+        <Reveal>
+          <section className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-brand-500/[0.07] via-transparent to-iris-500/[0.07] p-8 text-center sm:p-12">
+              <div aria-hidden="true" className="pointer-events-none absolute -top-16 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-brand-500/15 blur-3xl" />
+              <div className="relative">
+                <p className="text-sm font-bold uppercase tracking-widest text-brand-300">See the difference</p>
+                <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
+                  See what your website could become
+                </h2>
+                <p className="mx-auto mt-3 max-w-xl text-slate-300">
+                  Drag through a live before-and-after and watch an outdated site transform into a modern,
+                  conversion-focused one — for your industry.
+                </p>
+                <Link href="/transformation" className="btn-primary group mt-6">
+                  See the before &amp; after
+                  <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+
+        <Reveal><Capabilities /></Reveal>
+        <Reveal><Features /></Reveal>
+        <Reveal><Growth /></Reveal>
+        <Reveal><Testimonials /></Reveal>
+        <Reveal><CustomRequest /></Reveal>
+
+        {/* Build-your-own custom site (separate from the 3 fixed packages) */}
+        <Reveal>
+        <section id="quote" className="relative overflow-hidden">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-brand-500/15 blur-3xl" />
+            <div className="absolute bottom-10 right-10 h-56 w-56 rounded-full bg-iris-500/15 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-2xl px-4 py-16 sm:py-24">
+            <div className="mx-auto mb-8 max-w-2xl text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand-400/40 bg-brand-500/[0.08] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300">
+                <span className="h-2 w-2 rounded-full bg-brand-400 shadow-glow-brand" />
+                Build your own
+              </span>
+              <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                Make your own <span className="grad-text">custom site</span>
+              </h2>
+              <p className="mt-3 text-slate-300">
+                Not sure which package fits? Build it your way — pick your features, style and colours,
+                and we'll tailor a quote just for you.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-300">
+                {["Under 3 minutes", "No obligation", "Reply within 24h"].map((b) => (
+                  <span key={b} className="inline-flex items-center gap-1.5">
+                    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 text-jade-400" aria-hidden="true">
+                      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {b}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <LeadForm step={step} setStep={setStep} goToStep={goToStep} />
+          </div>
+        </section>
+        </Reveal>
+
+        <Reveal><FAQ /></Reveal>
+      </main>
+      <SiteFooter />
+    </FormProvider>
+  );
+}
