@@ -41,7 +41,7 @@ export default function SiteFooter() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/webryx-logo.svg" alt="Webryx Sites" className="h-9 w-9" />
             <span className="font-display text-lg font-bold tracking-tight text-white">
-              Webryx<span className="grad-text"> Sites</span>
+              Webryx<span className="accent-text"> Sites</span>
             </span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -55,7 +55,7 @@ export default function SiteFooter() {
 
         {COLUMNS.map((col) => (
           <div key={col.heading}>
-            <p className="text-sm font-bold uppercase tracking-widest text-slate-500">{col.heading}</p>
+            <p className="text-sm font-bold text-slate-400">{col.heading}</p>
             <ul className="mt-4 space-y-2.5">
               {col.links.map((l) => (
                 <li key={l.href + l.label}>

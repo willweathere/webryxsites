@@ -110,8 +110,8 @@ export default function BeforeAfter() {
         {/* The whole showcase sits inside one bordered premium panel */}
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-5 shadow-2xl shadow-black/40 sm:rounded-[2.5rem] sm:p-8 lg:p-10">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-widest text-brand-300">The transformation</p>
-            <h2 className="mt-2 font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+            <span className="spark-bar" aria-hidden="true" />
+            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
               See what your website could become
             </h2>
             <p className="mt-3 text-lg text-slate-300">
@@ -127,7 +127,7 @@ export default function BeforeAfter() {
                 type="button"
                 onClick={() => setActive(idx)}
                 aria-pressed={idx === active}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 cursor-pointer
+                className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition-all duration-300 cursor-pointer
                   ${idx === active
                     ? "border-transparent text-ink-950"
                     : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-white/30 hover:text-white"}`}
@@ -234,7 +234,7 @@ export default function BeforeAfter() {
           {/* Callouts — light up progressively as the slider reveals each side */}
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-opacity duration-300" style={{ opacity: beforeEmphasis }}>
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Before</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Before</p>
               <ul className="mt-3 space-y-2">
                 {BEFORE_CONS.map((c, i) => {
                   const on = itemActive(beforeRatio, i, BEFORE_CONS.length);
@@ -273,7 +273,7 @@ export default function BeforeAfter() {
               {TRUST.map((t) => (
                 <div key={t.text} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left">
                   <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-brand-400/30 bg-brand-500/10 text-brand-300">
-                    <svg viewBox="0 0 24 24" fill="none" className="h-4.5 w-4.5" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
                       <path d={TRUST_ICONS[t.icon]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>

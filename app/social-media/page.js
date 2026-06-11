@@ -36,12 +36,12 @@ export default function SocialMediaPage() {
               </svg>
               Back to home
             </Link>
-            <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-iris-300">
+            <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-4 py-1.5 text-sm font-semibold text-iris-300">
               <span className="h-2 w-2 rounded-full bg-iris-400 shadow-glow-iris" />
               Done-for-you social media
             </span>
-            <h1 className="mt-4 font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
-              Consistent posts, <span className="grad-text">every week</span>
+            <h1 className="mt-4 font-display text-[clamp(2.25rem,7.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white">
+              Consistent posts, <span className="accent-text">every week</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
               We plan, create and schedule your social media so your business stays active and
@@ -53,8 +53,8 @@ export default function SocialMediaPage() {
         {/* Plans */}
         <section className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-bold uppercase tracking-widest text-brand-300">Monthly plans</p>
-            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <span className="spark-bar" aria-hidden="true" />
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Pick your pace
             </h2>
             <p className="mt-3 text-slate-400">All plans are rolling monthly — no contracts, cancel anytime.</p>
@@ -73,7 +73,7 @@ export default function SocialMediaPage() {
                       {p.tagline}
                     </span>
                   )}
-                  <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{p.medal}</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{p.medal}</p>
                   <h3 className="mt-1 font-display text-2xl font-bold text-white">{p.name}</h3>
                   <p className="mt-1 text-sm text-slate-400">{p.summary}</p>
 
@@ -107,8 +107,8 @@ export default function SocialMediaPage() {
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-xl text-center text-sm text-slate-500">
-            Want a website <span className="text-slate-300">and</span> social media? Mention it when you get in
+          <p className="mx-auto mt-8 max-w-xl text-center text-sm text-slate-400">
+            Want a website <span className="text-slate-200">and</span> social media? Mention it when you get in
             touch and we'll bundle them.
           </p>
         </section>
@@ -117,8 +117,8 @@ export default function SocialMediaPage() {
         <section className="border-y border-white/5 bg-ink-900/40">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-bold uppercase tracking-widest text-brand-300">How it works</p>
-              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <span className="spark-bar" aria-hidden="true" />
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Hands-off, start to finish
               </h2>
             </div>

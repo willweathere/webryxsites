@@ -18,7 +18,6 @@ export default function Capabilities() {
     <section id="capabilities" className="border-y border-white/5 bg-ink-900/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <SectionHeading
-          eyebrow="What we can build"
           title="Way more than just a website"
           sub="Social feeds, video, online stores, bookings and more — tap any one to see what it can do for you."
         />

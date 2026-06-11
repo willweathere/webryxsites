@@ -29,7 +29,6 @@ export default function Growth() {
     <section id="results" className="border-y border-white/5 bg-ink-900/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <SectionHeading
-          eyebrow="Real results"
           title="Websites that grow your customer base"
           sub="A great site doesn't just look good — it brings in more enquiries, bookings and sales, month after month."
         />
@@ -90,7 +89,7 @@ export default function Growth() {
           </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-slate-500">
+        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-slate-400">
           Figures are illustrative of typical results for clients who move from no site (or an old one) to a fast, modern, SEO-ready website.
         </p>
       </div>

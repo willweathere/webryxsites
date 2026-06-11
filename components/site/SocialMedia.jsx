@@ -37,13 +37,13 @@ export default function SocialMedia() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:py-24 lg:grid-cols-2">
         {/* Copy */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-iris-300">
+          <span className="inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-4 py-1.5 text-sm font-semibold text-iris-300">
             <span className="h-2 w-2 rounded-full bg-iris-400 shadow-glow-iris" />
             Done-for-you
           </span>
 
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
-            Consistent <span className="grad-text">social media</span>, handled for you
+            Consistent <span className="accent-text">social media</span>, handled for you
           </h2>
 
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">

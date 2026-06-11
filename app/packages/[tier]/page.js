@@ -46,7 +46,7 @@ export default async function TierPage({ params }) {
 
             <div className="mt-5 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{pkg.medal} package</p>
+                <p className="text-sm font-semibold text-brand-300">{pkg.medal} package</p>
                 <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{pkg.name}</h1>
                 <p className="mt-3 max-w-xl text-slate-300">{detail.summary}</p>
               </div>
@@ -99,7 +99,7 @@ export default async function TierPage({ params }) {
                 <p className="mt-5 text-slate-300">{detail.idealFor}</p>
                 {addOns.length > 0 && (
                   <>
-                    <p className="mt-8 text-sm font-bold uppercase tracking-widest text-brand-300">Popular add-ons</p>
+                    <p className="mt-8 text-sm font-bold text-brand-300">Popular add-ons</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {addOns.map((a) => (
                         <Link key={a.slug} href={`/services/${a.slug}`}

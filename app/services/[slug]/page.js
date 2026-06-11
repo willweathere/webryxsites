@@ -39,8 +39,8 @@ export default async function ServicePage({ params }) {
 
             <div className="mt-5 grid gap-8 sm:grid-cols-2 sm:items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-brand-300">Capability</p>
-                <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{cap.title}</h1>
+                <span className="spark-bar" aria-hidden="true" />
+                <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">{cap.title}</h1>
                 <p className="mt-4 text-lg leading-relaxed text-slate-300">{cap.blurb}</p>
                 <Link href="/#quote" className="btn-primary mt-7">Add this to my site</Link>
               </div>

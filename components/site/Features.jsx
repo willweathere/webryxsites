@@ -22,19 +22,16 @@ export default function Features() {
   return (
     <section id="features" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <SectionHeading
-        eyebrow="What's included"
         title="Everything your website needs"
         sub="Powerful features built in as standard — no surprise add-ons."
       />
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* A light checklist, not another wall of cards — the cards live elsewhere */}
+      <div className="mx-auto mt-12 grid max-w-4xl gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
         {SITE_FEATURES.map((f) => (
-          <div
-            key={f.title}
-            className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-200 hover:border-brand-400/40"
-          >
-            <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-brand-400/30 bg-brand-500/10 text-brand-300 transition-colors group-hover:bg-brand-500/20">
-              <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+          <div key={f.title} className="flex items-start gap-3.5">
+            <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-300">
+              <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
                 <path d={ICONS[f.icon]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>

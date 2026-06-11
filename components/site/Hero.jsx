@@ -1,6 +1,7 @@
 "use client";
 
 import HeroWheel from "./HeroWheel";
+import MockupMarquee from "./MockupMarquee";
 
 export default function Hero() {
   return (
@@ -21,9 +22,9 @@ export default function Hero() {
           Now booking new projects
         </span>
 
-        <h1 className="mt-6 font-display text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl">
+        <h1 className="mt-6 font-display text-[clamp(2.25rem,7.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white">
           Premium Websites That{" "}
-          <span className="grad-text">Grow Your Business</span>
+          <span className="accent-text">Grow Your Business</span>
         </h1>
 
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
@@ -45,6 +46,9 @@ export default function Hero() {
           <Tick>Mobile-first & SEO-ready</Tick>
           <Tick>Reply within 24 hours</Tick>
         </div>
+
+        {/* Phones don't get the wheel — give them their own strip of work */}
+        <MockupMarquee />
       </div>
     </section>
   );

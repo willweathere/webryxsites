@@ -11,7 +11,7 @@ export function Field({ label, htmlFor, error, optional, children }) {
       >
         {label}
         {optional && (
-          <span className="text-xs font-medium text-slate-500">(optional)</span>
+          <span className="text-xs font-medium text-slate-400">(optional)</span>
         )}
       </label>
       {children}

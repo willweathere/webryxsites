@@ -80,7 +80,7 @@ export default function CartPage() {
 
               <div className="mt-4 flex items-center justify-between text-sm">
                 <Link href="/#pricing" className="font-medium text-slate-400 hover:text-white">Continue browsing</Link>
-                <button type="button" onClick={clear} className="cursor-pointer font-medium text-slate-500 hover:text-rose-300">Clear cart</button>
+                <button type="button" onClick={clear} className="cursor-pointer font-medium text-slate-400 hover:text-rose-300">Clear cart</button>
               </div>
             </div>
           </>

@@ -371,7 +371,7 @@ export default function LeadForm({ goToStep, step, setStep }) {
         )}
       </form>
 
-      <p className="mt-5 text-center text-xs text-slate-500">
+      <p className="mt-5 text-center text-xs text-slate-400">
         Your details are private and never shared. We reply within 24 hours.
       </p>
     </div>
@@ -417,7 +417,7 @@ function PackageCard({ pkg, selected, onClick }) {
       )}
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{pkg.medal}</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-slate-400">{pkg.medal}</p>
           <p className="text-xl font-extrabold text-white">{pkg.name}</p>
         </div>
         <div className="text-right">

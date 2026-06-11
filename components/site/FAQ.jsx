@@ -10,7 +10,6 @@ export default function FAQ() {
   return (
     <section id="faq" className="mx-auto max-w-3xl px-4 py-16 sm:py-24">
       <SectionHeading
-        eyebrow="Questions"
         title="Frequently asked questions"
         sub="Everything you need to know before getting started. Still unsure? Just send us a message."
       />

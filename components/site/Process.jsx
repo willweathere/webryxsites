@@ -7,7 +7,6 @@ export default function Process() {
   return (
     <section id="process" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <SectionHeading
-        eyebrow="How it works"
         title="From enquiry to live in four steps"
         sub="A simple, transparent process — you always know exactly where your project is."
       />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "../cart/CartProvider";
 
@@ -16,6 +16,14 @@ export default function Nav() {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
 
+  // Close the mobile menu with Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink-950/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
@@ -23,7 +31,7 @@ export default function Nav() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/webryx-logo.svg" alt="Webryx Sites" className="h-9 w-9" />
           <span className="font-display text-lg font-bold tracking-tight text-white">
-            Webryx<span className="grad-text"> Sites</span>
+            Webryx<span className="accent-text"> Sites</span>
           </span>
         </Link>
 

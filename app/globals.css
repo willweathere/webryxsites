@@ -9,10 +9,19 @@
   }
   body {
     @apply bg-ink-950 text-slate-200 antialiased;
+    overflow-x: clip; /* decorative glows must never cause sideways scroll on phones */
   }
   /* Offset anchored sections so the sticky nav doesn't cover headings */
   section[id] {
     scroll-margin-top: 92px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
   input,
   textarea,
@@ -28,7 +37,7 @@
 @layer components {
   .input-base {
     @apply w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5
-           text-base text-white placeholder:text-slate-500
+           text-base text-white placeholder:text-slate-400/80
            transition-colors duration-200
            focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30;
   }
@@ -38,9 +47,10 @@
     @apply inline-flex items-center justify-center gap-2 rounded-2xl
            bg-gradient-to-r from-brand-500 to-iris-500 px-6 py-3.5
            text-base font-bold text-white shadow-glow-brand
-           transition-all duration-200 hover:brightness-110 cursor-pointer
-           focus:outline-none focus:ring-2 focus:ring-brand-400/60
-           disabled:cursor-not-allowed disabled:opacity-60;
+           transition-all duration-200 hover:brightness-110 hover:-translate-y-0.5 cursor-pointer
+           active:translate-y-0 active:brightness-95
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60
+           disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
   }
 
   /* Secondary outline button */
@@ -48,16 +58,23 @@
     @apply inline-flex items-center justify-center gap-2 rounded-2xl
            border border-white/15 bg-white/[0.03] px-6 py-3.5
            text-base font-semibold text-white
-           transition-colors duration-200 hover:border-brand-400/60 hover:bg-white/[0.06]
-           cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-400/50;
+           transition-all duration-200 hover:border-brand-400/60 hover:bg-white/[0.06] hover:-translate-y-0.5
+           active:translate-y-0
+           cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/50;
   }
 
   .card-surface {
     @apply rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
   }
 
-  .grad-text {
-    @apply bg-gradient-to-r from-brand-300 via-iris-400 to-brand-400 bg-clip-text text-transparent;
+  /* Brand accent for the highlighted word in headings (solid, high-contrast) */
+  .accent-text {
+    @apply text-brand-300;
+  }
+
+  /* The Webryx "spark bar" — the single section-heading device used site-wide */
+  .spark-bar {
+    @apply inline-block h-1 w-9 rounded-full bg-gradient-to-r from-brand-400 to-iris-400;
   }
 }
 
@@ -72,6 +89,19 @@
   .reveal-in {
     opacity: 1;
     transform: none;
+  }
+
+  /* Endless horizontal mockup strip (mobile hero). Track holds two copies of
+     the same cards, so -50% loops seamlessly. Transform-only = cheap on phones. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -116,5 +146,9 @@
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+  /* Marquee falls back to a static row */
+  .marquee-track {
+    animation: none !important;
   }
 }

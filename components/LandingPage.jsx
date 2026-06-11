@@ -103,8 +103,8 @@ export default function LandingPage() {
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-brand-500/[0.07] via-transparent to-iris-500/[0.07] p-8 text-center sm:p-12">
               <div aria-hidden="true" className="pointer-events-none absolute -top-16 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-brand-500/15 blur-3xl" />
               <div className="relative">
-                <p className="text-sm font-bold uppercase tracking-widest text-brand-300">See the difference</p>
-                <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
+                <span className="spark-bar" aria-hidden="true" />
+                <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
                   See what your website could become
                 </h2>
                 <p className="mx-auto mt-3 max-w-xl text-slate-300">
@@ -138,12 +138,12 @@ export default function LandingPage() {
 
           <div className="relative mx-auto max-w-2xl px-4 py-16 sm:py-24">
             <div className="mx-auto mb-8 max-w-2xl text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-brand-400/40 bg-brand-500/[0.08] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-300">
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand-400/40 bg-brand-500/[0.08] px-4 py-1.5 text-sm font-semibold text-brand-300">
                 <span className="h-2 w-2 rounded-full bg-brand-400 shadow-glow-brand" />
                 Build your own
               </span>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
-                Make your own <span className="grad-text">custom site</span>
+                Make your own <span className="accent-text">custom site</span>
               </h2>
               <p className="mt-3 text-slate-300">
                 Not sure which package fits? Build it your way — pick your features, style and colours,

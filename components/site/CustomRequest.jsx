@@ -44,7 +44,7 @@ export default function CustomRequest() {
         <div aria-hidden="true" className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-brand-500/15 blur-3xl" />
 
         <div className="relative">
-          <span className="inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-3 py-1 text-xs font-bold uppercase tracking-widest text-iris-300">
+          <span className="inline-flex items-center gap-2 rounded-full border border-iris-400/40 bg-iris-500/[0.08] px-3 py-1 text-sm font-semibold text-iris-300">
             Add-on
           </span>
           <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -114,7 +114,7 @@ export default function CustomRequest() {
               </div>
 
               {error && <p className="text-sm font-medium text-rose-400" role="alert">{error}</p>}
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 This sends straight to our team. Prefer the full builder? Use the form below.
               </p>
             </div>

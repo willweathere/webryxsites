@@ -8,7 +8,6 @@ export default function Testimonials() {
     <section id="testimonials" className="border-y border-white/5 bg-ink-900/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <SectionHeading
-          eyebrow="What clients say"
           title="Trusted by business owners like you"
           sub="Real businesses, real growth — here's what working with us feels like."
         />

@@ -10,7 +10,6 @@ export default function Pricing() {
   return (
     <section id="pricing" className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
       <SectionHeading
-        eyebrow="Website packages"
         title="Simple, transparent pricing"
         sub="Three straightforward packages — tap any one to see exactly what it looks like and what's included. Want something bespoke instead? Build your own further down."
       />
@@ -20,10 +19,10 @@ export default function Pricing() {
           <Link
             key={p.value}
             href={`/packages/${p.value}`}
-            className={`group relative flex flex-col rounded-3xl border p-6 transition-colors duration-200
+            className={`group relative flex flex-col rounded-3xl border p-6 transition-all duration-200 hover:-translate-y-1
               ${p.popular
                 ? "border-brand-400/60 bg-brand-500/[0.06] shadow-glow-brand"
-                : "border-white/10 bg-white/[0.03] hover:border-brand-400/50"}`}
+                : "border-white/10 bg-white/[0.03] hover:border-brand-400/50 hover:bg-white/[0.05]"}`}
           >
             {p.popular && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold text-ink-950 shadow-glow-gold">
@@ -31,7 +30,7 @@ export default function Pricing() {
               </span>
             )}
 
-            <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{p.medal}</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-400">{p.medal}</p>
             <h3 className="mt-1 font-display text-2xl font-bold text-white">{p.name}</h3>
 
             <div className="mt-4 flex items-end gap-1">
@@ -118,13 +117,12 @@ export default function Pricing() {
   );
 }
 
-export function SectionHeading({ eyebrow, title, sub }) {
+export function SectionHeading({ title, sub, align = "center" }) {
+  const centered = align === "center";
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      {eyebrow && (
-        <p className="text-sm font-bold uppercase tracking-widest text-brand-300">{eyebrow}</p>
-      )}
-      <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <div className={centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+      <span className="spark-bar" aria-hidden="true" />
+      <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
         {title}
       </h2>
       {sub && <p className="mt-3 text-slate-400">{sub}</p>}
