@@ -15,14 +15,15 @@ export default function Pricing() {
       />
 
       <div className="mt-12 grid gap-5 lg:grid-cols-3">
-        {PACKAGES.map((p) => (
+        {PACKAGES.map((p, i) => (
           <Link
             key={p.value}
             href={`/packages/${p.value}`}
-            className={`group relative flex flex-col rounded-3xl border p-6 transition-all duration-200 hover:-translate-y-1
+            style={{ "--i": i }}
+            className={`stagger-item group relative flex flex-col rounded-3xl border p-6 transition-all duration-200 hover:-translate-y-1
               ${p.popular
-                ? "border-brand-400/60 bg-brand-500/[0.06] shadow-glow-brand"
-                : "border-white/10 bg-white/[0.03] hover:border-brand-400/50 hover:bg-white/[0.05]"}`}
+                ? "border-brand-400/60 bg-brand-500/[0.06] shadow-glow-brand hover:shadow-glow-brand-lg lg:scale-[1.03]"
+                : "border-white/10 bg-white/[0.03] hover:border-brand-400/50 hover:bg-white/[0.05] hover:shadow-card-lift"}`}
           >
             {p.popular && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold text-ink-950 shadow-glow-gold">

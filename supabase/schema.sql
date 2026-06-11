@@ -1,4 +1,4 @@
--- Webryx Sites — leads table
+-- Rune Sites — leads table
 -- Run this whole file in the Supabase SQL editor (Dashboard → SQL Editor → New query).
 -- (Schema is identical to the original Touchline table, so both sites can share it.)
 

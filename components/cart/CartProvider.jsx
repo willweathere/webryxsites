@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
-const STORAGE_KEY = "webryx_cart_v1";
+const STORAGE_KEY = "rune_cart_v1";
 const CartContext = createContext(null);
 
 export function CartProvider({ children }) {

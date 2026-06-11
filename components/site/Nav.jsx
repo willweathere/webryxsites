@@ -15,6 +15,7 @@ const LINKS = [
 export default function Nav() {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Close the mobile menu with Escape.
   useEffect(() => {
@@ -24,14 +25,25 @@ export default function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Deepen the bar once the page scrolls so it reads as a floating layer.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-ink-950/80 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-40 border-b backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300
+        ${scrolled ? "border-white/15 bg-ink-950/95 shadow-lg shadow-black/40" : "border-white/10 bg-ink-950/80"}`}
+    >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/webryx-logo.svg" alt="Webryx Sites" className="h-9 w-9" />
+          <img src="/rune-logo.svg" alt="Rune Sites" className="h-9 w-9" />
           <span className="font-display text-lg font-bold tracking-tight text-white">
-            Webryx<span className="accent-text"> Sites</span>
+            Rune<span className="accent-text"> Sites</span>
           </span>
         </Link>
 

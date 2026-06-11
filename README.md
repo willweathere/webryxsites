@@ -1,4 +1,4 @@
-# Webryx Sites
+# Rune Sites
 
 Premium agency landing page + lead-generation system built with Next.js 16, React 19 and Tailwind CSS.
 
@@ -26,4 +26,4 @@ Email sending prefers Gmail (`GMAIL_USER` + `GMAIL_APP_PASSWORD`) and falls back
 
 ## Deploy
 
-Pushed to GitHub and auto-deployed by Netlify (site: `webryxsites`). Set the same env vars in Netlify → Site settings → Environment variables.
+Pushed to GitHub and auto-deployed by Netlify (site: `webryxsites`, custom domain runewebsites.com). Set the same env vars in Netlify → Site settings → Environment variables.

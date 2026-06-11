@@ -87,7 +87,7 @@ export default function SocialMedia() {
         </div>
 
         {/* Visual: a phone-style stack of scheduled posts */}
-        <div className="relative mx-auto w-full max-w-sm">
+        <div className="relative mx-auto w-full max-w-sm animate-float-slow motion-reduce:animate-none">
           <div className="rounded-[2rem] border border-white/10 bg-ink-900 p-4 shadow-2xl shadow-black/50">
             {/* header */}
             <div className="mb-3 flex items-center justify-between px-1">
@@ -97,7 +97,7 @@ export default function SocialMedia() {
                     <path d="M4 13.5 9.5 19 20 6.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <span className="text-sm font-bold text-white">Webryx Social</span>
+                <span className="text-sm font-bold text-white">Rune Social</span>
               </div>
               <span className="inline-flex items-center gap-1 rounded-full border border-brand-400/40 bg-brand-500/[0.08] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-300">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-400" /> Managed

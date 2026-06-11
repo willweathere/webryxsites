@@ -39,11 +39,19 @@ export default function FAQ() {
                   <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-              {isOpen && (
-                <p className="animate-fade-in px-5 pb-5 text-sm leading-relaxed text-slate-300">
-                  {f.a}
-                </p>
-              )}
+              {/* Always rendered; grid-rows animates the height smoothly */}
+              <div
+                aria-hidden={!isOpen}
+                className="grid"
+                style={{
+                  gridTemplateRows: isOpen ? "1fr" : "0fr",
+                  transition: "grid-template-rows 0.35s var(--ease-out-quart)",
+                }}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-5 pb-5 text-sm leading-relaxed text-slate-300">{f.a}</p>
+                </div>
+              </div>
             </div>
           );
         })}

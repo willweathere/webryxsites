@@ -12,8 +12,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const cap = capabilityFor(slug);
-  if (!cap) return { title: "Service not found — Webryx Sites" };
-  return { title: `${cap.title} · Webryx Sites`, description: cap.blurb };
+  if (!cap) return { title: "Service not found — Rune Sites" };
+  return { title: `${cap.title} · Rune Sites`, description: cap.blurb };
 }
 
 export default async function ServicePage({ params }) {

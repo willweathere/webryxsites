@@ -15,8 +15,9 @@ export default function Process() {
         {/* connecting line on large screens */}
         <div aria-hidden="true" className="absolute left-0 right-0 top-[2.35rem] hidden h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent lg:block" />
 
-        {PROCESS_STEPS.map((s) => (
-          <div key={s.n} className="relative flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-brand-400/40">
+        {PROCESS_STEPS.map((s, i) => (
+          <div key={s.n} style={{ "--i": i }}
+            className="stagger-item relative flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-400/40 hover:shadow-card-lift">
             <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-iris-500 font-display text-base font-bold text-white shadow-glow-brand">
               {s.n}
             </span>

@@ -16,26 +16,26 @@ const sora = Sora({
   display: "swap",
 });
 
-const SITE_URL = "https://webryxsites.netlify.app";
+const SITE_URL = "https://runewebsites.com";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Webryx Sites — Premium Websites That Grow Your Business",
+  title: "Rune Sites — Premium Websites That Grow Your Business",
   description:
     "Premium, lightning-fast, conversion-focused websites for growing businesses. Clear pricing from £99. Get a free quote in under 3 minutes.",
   keywords: ["web design", "website agency", "small business websites", "SEO", "social media management"],
   openGraph: {
-    title: "Webryx Sites — Premium Websites That Grow Your Business",
+    title: "Rune Sites — Premium Websites That Grow Your Business",
     description:
       "Premium, lightning-fast, conversion-focused websites for growing businesses. Clear pricing from £99.",
     url: SITE_URL,
-    siteName: "Webryx Sites",
+    siteName: "Rune Sites",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Webryx Sites — Premium Websites That Grow Your Business",
+    title: "Rune Sites — Premium Websites That Grow Your Business",
     description: "Premium, conversion-focused websites from £99. Free quote in under 3 minutes.",
   },
   robots: { index: true, follow: true },
@@ -51,7 +51,7 @@ export const viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Webryx Sites",
+  name: "Rune Sites",
   description:
     "Premium, conversion-focused websites and done-for-you social media for growing businesses.",
   url: SITE_URL,

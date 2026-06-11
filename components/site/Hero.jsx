@@ -17,22 +17,22 @@ export default function Hero() {
       <HeroWheel />
 
       <div className="relative mx-auto max-w-3xl px-4 pt-16 pb-14 text-center sm:pt-24 sm:pb-20">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-slate-300">
+        <span className="rise inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-slate-300" style={{ "--i": 0 }}>
           <span className="h-2 w-2 rounded-full bg-jade-400 shadow-glow-jade" />
           Now booking new projects
         </span>
 
-        <h1 className="mt-6 font-display text-[clamp(2.25rem,7.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white">
+        <h1 className="rise mt-6 font-display text-[clamp(2.25rem,7.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white" style={{ "--i": 1 }}>
           Premium Websites That{" "}
           <span className="accent-text">Grow Your Business</span>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
+        <p className="rise mx-auto mt-5 max-w-xl text-lg leading-relaxed text-slate-300" style={{ "--i": 2 }}>
           Modern, lightning-fast websites built to win you customers — designed,
           launched, and looked after from just £99. No jargon, no hassle.
         </p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="rise mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ "--i": 3 }}>
           <a href="#quote" className="btn-primary w-full sm:w-auto">
             Get a Free Quote
           </a>
@@ -41,14 +41,16 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-400">
+        <div className="rise mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-400" style={{ "--i": 4 }}>
           <Tick>Live in days, not months</Tick>
           <Tick>Mobile-first & SEO-ready</Tick>
           <Tick>Reply within 24 hours</Tick>
         </div>
 
         {/* Phones don't get the wheel — give them their own strip of work */}
-        <MockupMarquee />
+        <div className="rise" style={{ "--i": 5 }}>
+          <MockupMarquee />
+        </div>
       </div>
     </section>
   );

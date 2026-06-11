@@ -6,7 +6,7 @@ import AddToCart from "@/components/cart/AddToCart";
 import { SOCIAL_PLANS } from "@/components/siteContent";
 
 export const metadata = {
-  title: "Social media management — from £50/month · Webryx Sites",
+  title: "Social media management — from £50/month · Rune Sites",
   description:
     "Done-for-you social media. We plan, create and schedule consistent posts for your business across every platform. Monthly plans from £50.",
 };

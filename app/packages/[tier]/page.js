@@ -14,9 +14,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { tier } = await params;
   const pkg = packageFor(tier);
-  if (!pkg) return { title: "Package not found — Webryx Sites" };
+  if (!pkg) return { title: "Package not found — Rune Sites" };
   return {
-    title: `${pkg.name} package — £${pkg.setup} setup + £${pkg.monthly}/mo · Webryx Sites`,
+    title: `${pkg.name} package — £${pkg.setup} setup + £${pkg.monthly}/mo · Rune Sites`,
     description: tierDetailFor(pkg.value)?.summary,
   };
 }

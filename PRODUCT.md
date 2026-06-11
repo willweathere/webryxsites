@@ -10,7 +10,7 @@ UK small-business owners (restaurants, trades, gyms, salons, local services) who
 
 ## Product Purpose
 
-Webryx Sites is a lead-generation marketing site for a web design agency. Every section exists to move a visitor toward one of three conversions: pick a fixed package (£99/£249/£499 + monthly), buy a social-media plan (£50–£150/mo), or complete the 6-step "build your own site" enquiry form. Leads are stored in Supabase and emailed to the owner. Success = enquiries submitted.
+Rune Sites (runewebsites.com, formerly Webryx Sites) is a lead-generation marketing site for a web design agency. Every section exists to move a visitor toward one of three conversions: pick a fixed package (£99/£249/£499 + monthly), buy a social-media plan (£50–£150/mo), or complete the 6-step "build your own site" enquiry form. Leads are stored in Supabase and emailed to the owner. Success = enquiries submitted.
 
 ## Brand Personality
 

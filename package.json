@@ -1,8 +1,8 @@
 {
-  "name": "webryx-sites",
+  "name": "rune-sites",
   "version": "1.0.0",
   "private": true,
-  "description": "Webryx Sites - premium agency landing page + lead generation system.",
+  "description": "Rune Sites - premium agency landing page + lead generation system.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

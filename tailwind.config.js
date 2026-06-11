@@ -44,6 +44,7 @@ module.exports = {
       },
       boxShadow: {
         "glow-brand": "0 0 0 1px rgba(110,118,255,0.35), 0 0 30px -6px rgba(110,118,255,0.5)",
+        "glow-brand-lg": "0 0 0 1px rgba(110,118,255,0.55), 0 0 48px -4px rgba(110,118,255,0.7)",
         "glow-iris": "0 0 28px -4px rgba(160,106,255,0.45)",
         "glow-gold": "0 0 24px -4px rgba(248,184,78,0.5)",
         "glow-jade": "0 0 24px -6px rgba(52,211,153,0.5)",

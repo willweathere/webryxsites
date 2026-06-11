@@ -28,8 +28,8 @@ export default function Features() {
 
       {/* A light checklist, not another wall of cards — the cards live elsewhere */}
       <div className="mx-auto mt-12 grid max-w-4xl gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
-        {SITE_FEATURES.map((f) => (
-          <div key={f.title} className="flex items-start gap-3.5">
+        {SITE_FEATURES.map((f, i) => (
+          <div key={f.title} style={{ "--i": i }} className="stagger-item flex items-start gap-3.5">
             <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-300">
               <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
                 <path d={ICONS[f.icon]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />

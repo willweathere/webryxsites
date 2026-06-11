@@ -64,8 +64,8 @@ export default function Growth() {
                   stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
               ))}
 
-              <path d={area} fill="url(#growthFill)" />
-              <path d={line} fill="none" stroke="url(#growthLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              <path d={area} fill="url(#growthFill)" className="chart-fill" />
+              <path d={line} fill="none" stroke="url(#growthLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" pathLength="1" className="chart-draw" />
 
               {points.map(([x, y], i) => (
                 <circle key={i} cx={x} cy={y} r={i === points.length - 1 ? 5 : 2.5}
@@ -80,8 +80,9 @@ export default function Growth() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 lg:col-span-2">
-            {STATS.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            {STATS.map((s, i) => (
+              <div key={s.label} style={{ "--i": i }}
+                className="stagger-item rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-brand-400/40">
                 <p className="font-display text-3xl font-bold text-brand-300">{s.value}</p>
                 <p className="mt-1 text-sm text-slate-400">{s.label}</p>
               </div>

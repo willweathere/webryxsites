@@ -1,7 +1,7 @@
 // Shared form configuration used by both the provider (LandingPage) and the
 // multi-step LeadForm so they agree on defaults, storage key and step gating.
 
-export const STORAGE_KEY = "webryx_lead_form_v1";
+export const STORAGE_KEY = "rune_lead_form_v1";
 
 export const DEFAULTS = {
   fullName: "",

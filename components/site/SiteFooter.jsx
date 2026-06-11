@@ -39,9 +39,9 @@ export default function SiteFooter() {
         <div className="lg:col-span-2">
           <Link href="/" className="flex items-center gap-2.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/webryx-logo.svg" alt="Webryx Sites" className="h-9 w-9" />
+            <img src="/rune-logo.svg" alt="Rune Sites" className="h-9 w-9" />
             <span className="font-display text-lg font-bold tracking-tight text-white">
-              Webryx<span className="accent-text"> Sites</span>
+              Rune<span className="accent-text"> Sites</span>
             </span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -70,7 +70,7 @@ export default function SiteFooter() {
       </div>
 
       <div className="border-t border-white/[0.06] py-6 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Webryx Sites · Premium websites that win you customers
+        © {new Date().getFullYear()} Rune Sites · Premium websites that win you customers
       </div>
     </footer>
   );

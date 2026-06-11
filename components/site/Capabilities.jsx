@@ -23,13 +23,14 @@ export default function Capabilities() {
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {CAPABILITIES.map((c) => (
+          {CAPABILITIES.map((c, i) => (
             <Link
               key={c.slug}
               href={`/services/${c.slug}`}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-brand-400/50"
+              style={{ "--i": i }}
+              className="stagger-item group flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-400/50 hover:shadow-card-lift"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand-400/30 bg-brand-500/10 text-brand-300 transition-colors group-hover:bg-brand-500/20">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand-400/30 bg-brand-500/10 text-brand-300 transition-all duration-200 group-hover:scale-110 group-hover:bg-brand-500/20">
                 <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
                   <path d={ICONS[c.icon]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

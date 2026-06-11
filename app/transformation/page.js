@@ -4,7 +4,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import BeforeAfter from "@/components/site/BeforeAfter";
 
 export const metadata = {
-  title: "See your website transformation · Webryx Sites",
+  title: "See your website transformation · Rune Sites",
   description:
     "Drag a live before-and-after slider to see how a modern, conversion-focused website can transform your business — for your industry.",
 };

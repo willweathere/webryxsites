@@ -1,7 +1,7 @@
 import { PACKAGES } from "@/components/constants";
 import { CAPABILITIES } from "@/components/siteContent";
 
-const BASE = "https://webryxsites.netlify.app";
+const BASE = "https://runewebsites.com";
 
 export default function sitemap() {
   const now = new Date();
