@@ -50,7 +50,7 @@ export default function Nav() {
         <div className="hidden items-center gap-7 lg:flex">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href}
-              className="text-sm font-medium text-slate-300 transition-colors hover:text-brand-300">
+              className="nav-link text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-brand-300">
               {l.label}
             </Link>
           ))}
@@ -65,7 +65,7 @@ export default function Nav() {
               <circle cx="18" cy="20" r="1.4" fill="currentColor" />
             </svg>
             {count > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold-400 px-1 text-[11px] font-bold text-ink-950 shadow-glow-gold">
+              <span key={count} className="badge-pop absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold-400 px-1 text-[11px] font-bold text-ink-950 shadow-glow-gold">
                 {count}
               </span>
             )}

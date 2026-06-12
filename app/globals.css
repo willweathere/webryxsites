@@ -49,13 +49,31 @@
 
   /* Primary CTA — indigo to violet gradient */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl
            bg-gradient-to-r from-brand-500 to-iris-500 px-6 py-3.5
            text-base font-bold text-white shadow-glow-brand
            transition-all duration-200 hover:brightness-110 hover:-translate-y-0.5 hover:shadow-glow-brand-lg cursor-pointer
-           active:translate-y-0 active:brightness-95
+           active:translate-y-0 active:scale-[0.98] active:brightness-95
            focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/60
            disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+    transition-timing-function: var(--ease-out-quart);
+  }
+  /* Sheen sweep across the CTA on hover. Slides off-canvas at rest and snaps
+     back invisibly on mouse-out (no reverse sweep). */
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.18) 50%, transparent 62%);
+    transform: translateX(-150%);
+  }
+  .btn-primary:hover::before {
+    transform: translateX(150%);
+    transition: transform 0.65s var(--ease-out-quart);
+  }
+  .btn-primary:disabled::before {
+    display: none;
   }
 
   /* Secondary outline button */
@@ -64,8 +82,30 @@
            border border-white/15 bg-white/[0.03] px-6 py-3.5
            text-base font-semibold text-white
            transition-all duration-200 hover:border-brand-400/60 hover:bg-white/[0.06] hover:-translate-y-0.5
-           active:translate-y-0
+           active:translate-y-0 active:scale-[0.98]
            cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/50;
+    transition-timing-function: var(--ease-out-quart);
+  }
+
+  /* Desktop nav links: gradient underline grows from the centre on hover */
+  .nav-link {
+    @apply relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #8b93ff, #b78aff);
+    transform: scaleX(0);
+    transition: transform 0.3s var(--ease-out-quart);
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .card-surface {
@@ -114,35 +154,26 @@
   }
 
   /* Children of a revealed section can stagger in. Scoped under .reveal so
-     content stays visible when JS never arms the observer. */
-  .reveal .stagger-item {
+     content stays visible when JS never arms the observer.
+     Implemented as a fill-mode animation (not a transition) so the entrance
+     never hijacks the card's own hover transition — with the old transition
+     approach, the stagger delay also delayed every hover lift. */
+  .reveal:not(.reveal-in) .stagger-item {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s var(--ease-out-quint), transform 0.6s var(--ease-out-quint);
-    /* cap the total stagger so long lists never feel laggy */
-    transition-delay: calc(min(var(--i, 0), 6) * 80ms);
   }
   .reveal-in .stagger-item {
-    opacity: 1;
-    transform: none;
+    animation: stagger-in 0.6s var(--ease-out-quint) backwards;
+    /* cap the total stagger so long lists never feel laggy */
+    animation-delay: calc(min(var(--i, 0), 6) * 80ms);
   }
 
-  /* Growth chart: line draws itself in once the section reveals (needs
-     pathLength="1" on the path). Same no-JS-safe scoping as above. */
-  .reveal .chart-draw {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    transition: stroke-dashoffset 1.4s var(--ease-out-quart) 0.2s;
+  /* Section heading spark bar grows in with its section */
+  .reveal .spark-bar {
+    transform: scaleX(0);
+    transition: transform 0.7s var(--ease-out-quint) 0.15s;
   }
-  .reveal-in .chart-draw {
-    stroke-dashoffset: 0;
-  }
-  .reveal .chart-fill {
-    opacity: 0;
-    transition: opacity 0.8s ease 1s;
-  }
-  .reveal-in .chart-fill {
-    opacity: 1;
+  .reveal-in .spark-bar {
+    transform: scaleX(1);
   }
 
   /* Endless horizontal mockup strip (mobile hero). Track holds two copies of
@@ -152,11 +183,48 @@
     width: max-content;
     animation: marquee 38s linear infinite;
   }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
   @keyframes marquee {
     to {
       transform: translateX(-50%);
     }
   }
+
+  /* Cart count badge pops in when it appears/changes */
+  .badge-pop {
+    animation: badge-pop 0.35s var(--ease-out-quart) both;
+  }
+}
+
+/* Stagger entrance: only a from-frame, so once finished nothing is pinned and
+   hover transforms take over cleanly. */
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* One easing curve for every card/tile hover site-wide. Lives outside the
+   layers so it reliably overrides the timing-function set by Tailwind's
+   transition-* utilities on the same element. */
+.stagger-item,
+.card-surface {
+  transition-timing-function: var(--ease-out-quart);
 }
 
 /* Mobile performance: cap heavy decorative blur radii so the glow layers
@@ -194,7 +262,9 @@
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
   }
   /* Never hide content for reduced-motion users */
   .reveal,
@@ -202,11 +272,8 @@
     opacity: 1 !important;
     transform: none !important;
   }
-  .reveal .chart-draw {
-    stroke-dashoffset: 0 !important;
-  }
-  .reveal .chart-fill {
-    opacity: 1 !important;
+  .reveal .spark-bar {
+    transform: none !important;
   }
   /* Marquee falls back to a static row */
   .marquee-track {

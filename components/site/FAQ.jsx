@@ -45,7 +45,9 @@ export default function FAQ() {
                 className="grid"
                 style={{
                   gridTemplateRows: isOpen ? "1fr" : "0fr",
-                  transition: "grid-template-rows 0.35s var(--ease-out-quart)",
+                  opacity: isOpen ? 1 : 0,
+                  transition:
+                    "grid-template-rows 0.35s var(--ease-out-quart), opacity 0.35s var(--ease-out-quart)",
                 }}
               >
                 <div className="overflow-hidden">
