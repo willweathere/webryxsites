@@ -2,97 +2,55 @@
 
 import { SectionHeading } from "./Pricing";
 
-// Monthly customer-enquiry trend (illustrative). Replace with real numbers anytime.
-const DATA = [12, 18, 22, 30, 41, 52, 64, 79, 92, 110, 128, 150];
-const MONTHS = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
-
-const STATS = [
-  { value: "+312%", label: "More enquiries in 6 months" },
-  { value: "2.4×", label: "More customers on average" },
-  { value: "< 1s", label: "Average page load time" },
-  { value: "24h", label: "Typical reply time" },
+const REASONS = [
+  {
+    title: "Built to convert, not just to look nice",
+    body: "Clear calls to action, click-to-call buttons and booking forms on every page — so visitors don't have to hunt for a way to contact you.",
+  },
+  {
+    title: "Loads instantly, even on mobile data",
+    body: "Most local searches happen on a phone. A slow site loses customers before they even see what you offer — ours load in under a second.",
+  },
+  {
+    title: "Built to be found on Google",
+    body: "Proper structure, fast pages and local SEO basics from day one, so you show up when people search for what you do nearby.",
+  },
+  {
+    title: "Easy for you to keep up to date",
+    body: "Update prices, photos and opening hours yourself in minutes — no developer needed, no waiting around for changes.",
+  },
 ];
 
 export default function Growth() {
-  const W = 600, H = 240, pad = 16;
-  const max = Math.max(...DATA);
-  const stepX = (W - pad * 2) / (DATA.length - 1);
-  const points = DATA.map((v, i) => {
-    const x = pad + i * stepX;
-    const y = H - pad - (v / max) * (H - pad * 2);
-    return [x, y];
-  });
-  const line = points.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
-  const area = `${line} L${points[points.length - 1][0].toFixed(1)},${H - pad} L${points[0][0].toFixed(1)},${H - pad} Z`;
-
   return (
     <section id="results" className="border-y border-white/5 bg-ink-900/40">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <SectionHeading
-          title="Websites that grow your customer base"
-          sub="A great site doesn't just look good — it brings in more enquiries, bookings and sales, month after month."
+          title="A website that works as hard as you do"
+          sub="A great site isn't just a digital business card — it's there to turn visitors into enquiries, bookings and sales, around the clock."
         />
 
-        <div className="mt-12 grid items-center gap-8 lg:grid-cols-5">
-          {/* Chart */}
-          <div className="card-surface p-5 sm:p-6 lg:col-span-3">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-400">Monthly customer enquiries</p>
-                <p className="font-display text-2xl font-bold text-jade-400">▲ Trending up</p>
-              </div>
-              <span className="rounded-full border border-jade-400/40 bg-jade-400/[0.08] px-3 py-1 text-xs font-semibold text-jade-400">
-                Last 12 months
-              </span>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {REASONS.map((r, i) => (
+            <div
+              key={r.title}
+              style={{ "--i": i }}
+              className="stagger-item rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-400/40"
+            >
+              <h3 className="font-display text-lg font-bold text-white">{r.title}</h3>
+              <p className="mt-2 text-sm text-slate-400">{r.body}</p>
             </div>
-
-            <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Line chart showing customer enquiries rising over 12 months">
-              <defs>
-                <linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#A06AFF" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="#A06AFF" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="growthLine" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#6E76FF" />
-                  <stop offset="100%" stopColor="#A06AFF" />
-                </linearGradient>
-              </defs>
-
-              {/* gridlines */}
-              {[0.25, 0.5, 0.75].map((g) => (
-                <line key={g} x1={pad} x2={W - pad} y1={pad + g * (H - pad * 2)} y2={pad + g * (H - pad * 2)}
-                  stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-              ))}
-
-              <path d={area} fill="url(#growthFill)" className="chart-fill" />
-              <path d={line} fill="none" stroke="url(#growthLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" pathLength="1" className="chart-draw" />
-
-              {points.map(([x, y], i) => (
-                <circle key={i} cx={x} cy={y} r={i === points.length - 1 ? 5 : 2.5}
-                  fill={i === points.length - 1 ? "#A06AFF" : "#6E76FF"} />
-              ))}
-
-              {MONTHS.map((m, i) => (
-                <text key={i} x={pad + i * stepX} y={H - 2} textAnchor="middle" fontSize="10" fill="rgba(255,255,255,0.35)">{m}</text>
-              ))}
-            </svg>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 lg:col-span-2">
-            {STATS.map((s, i) => (
-              <div key={s.label} style={{ "--i": i }}
-                className="stagger-item rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-brand-400/40">
-                <p className="font-display text-3xl font-bold text-brand-300">{s.value}</p>
-                <p className="mt-1 text-sm text-slate-400">{s.label}</p>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-slate-400">
-          Figures are illustrative of typical results for clients who move from no site (or an old one) to a fast, modern, SEO-ready website.
-        </p>
+        <div className="mt-10 flex justify-center">
+          <a href="#quote" className="btn-primary group">
+            Get your free quote
+            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );
