@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 import { Manrope, Sora } from "next/font/google";
 import { CartProvider } from "@/components/cart/CartProvider";
 
@@ -63,6 +64,37 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${manrope.variable} ${sora.variable}`}>
       <body>
+        {/* GSAP + ScrollTrigger (CDN). Loaded before hydration so client
+            components can use window.gsap / window.ScrollTrigger in effects. */}
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script id="gsap-register" strategy="beforeInteractive">
+          {`if (window.gsap && window.ScrollTrigger) { window.gsap.registerPlugin(window.ScrollTrigger); }`}
+        </Script>
+        {/* Three.js (CDN global, r147) for WebGL 3D. Exposes window.THREE.
+            Addons below attach to THREE.* (OrbitControls, GLTFLoader, RGBELoader). */}
+        <Script
+          src="https://unpkg.com/three@0.147.0/build/three.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://unpkg.com/three@0.147.0/examples/js/loaders/RGBELoader.js"
+          strategy="beforeInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

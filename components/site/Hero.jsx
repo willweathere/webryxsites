@@ -2,6 +2,7 @@
 
 import HeroWheel from "./HeroWheel";
 import MockupMarquee from "./MockupMarquee";
+import Hero3DBackdrop from "./Hero3DBackdrop";
 
 export default function Hero() {
   return (
@@ -12,6 +13,9 @@ export default function Hero() {
         <div className="absolute top-10 -right-10 h-64 w-64 rounded-full bg-iris-500/20 blur-3xl" />
         <div className="absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-gold-400/10 blur-3xl" />
       </div>
+
+      {/* Interactive 3D particle field (WebGL) for depth behind the hero */}
+      <Hero3DBackdrop />
 
       {/* Slow, blurred wheel of website previews turning behind the hero */}
       <HeroWheel />
