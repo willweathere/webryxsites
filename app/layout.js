@@ -107,6 +107,8 @@ export default function RootLayout({ children }) {
           <div className="absolute top-[58%] left-[-8%] h-[28rem] w-[28rem] rounded-full bg-brand-600/[0.06] blur-[130px]" />
           <div className="absolute bottom-[-12%] right-[16%] h-[28rem] w-[28rem] rounded-full bg-gold-400/[0.04] blur-[130px]" />
         </div>
+        {/* Film grain texture over the whole page */}
+        <div aria-hidden="true" className="grain-overlay" />
         <ScrollUI />
         <CartProvider>{children}</CartProvider>
       </body>
