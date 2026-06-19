@@ -2,6 +2,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Manrope, Sora } from "next/font/google";
 import { CartProvider } from "@/components/cart/CartProvider";
+import ScrollUI from "@/components/site/ScrollUI";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -106,6 +107,7 @@ export default function RootLayout({ children }) {
           <div className="absolute top-[58%] left-[-8%] h-[28rem] w-[28rem] rounded-full bg-brand-600/[0.06] blur-[130px]" />
           <div className="absolute bottom-[-12%] right-[16%] h-[28rem] w-[28rem] rounded-full bg-gold-400/[0.04] blur-[130px]" />
         </div>
+        <ScrollUI />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
