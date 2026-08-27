@@ -9,6 +9,7 @@ export default function sitemap() {
     { url: BASE, lastModified: now, priority: 1 },
     { url: `${BASE}/social-media`, lastModified: now, priority: 0.8 },
     { url: `${BASE}/transformation`, lastModified: now, priority: 0.7 },
+    { url: `${BASE}/privacy`, lastModified: now, priority: 0.3 },
     ...PACKAGES.map((p) => ({
       url: `${BASE}/packages/${p.value}`,
       lastModified: now,

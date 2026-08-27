@@ -70,7 +70,12 @@ export default function SiteFooter() {
       </div>
 
       <div className="border-t border-white/[0.06] py-6 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Rune Sites · Premium websites that win you customers
+        <p>© {new Date().getFullYear()} Rune Sites · Premium websites that win you customers</p>
+        <p className="mt-2">
+          <Link href="/privacy" className="transition-colors hover:text-brand-300">
+            Privacy Policy
+          </Link>
+        </p>
       </div>
     </footer>
   );
